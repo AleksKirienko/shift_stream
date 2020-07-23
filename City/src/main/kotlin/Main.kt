@@ -13,7 +13,7 @@ private fun getCity(): String {
 
 private fun getTemperature(): Int {
     println("Сколько градусов?")
-    return readLine()?.toIntOrNull() ?: throw error("Введите возраст  в виде числа")
+    return readLine()?.toIntOrNull() ?: throw error("Введите кол-во градусов в виде числа")
 }
 
 fun getWeatherTemp(city: City) : String =
