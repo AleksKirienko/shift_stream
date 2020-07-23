@@ -1,0 +1,40 @@
+//Сравнение двух одинаковых пользователей
+{
+    override fun equals(other: Any?): Boolean {
+
+        if (this === other) {
+            return true
+        }
+
+        if (other == null) {
+            return false
+        }
+
+        if (this::class != other::class) //сравнение классов двух объектов
+            return false
+
+        other as User //утверждение что другой объект это пользователь
+
+        return firstName == other.firstName && lastName == other.lastName
+    }
+}
+
+
+) {
+
+    val fullName: String
+    get() = "$firstName $lastName"
+}
+
+fun createUser(): User? =
+    User("Alex", "Gervas")
+
+var string = "joj"
+    get() {
+        println("current field: $field")
+        return field
+    }
+    set(value) {
+        println("field: $field value: $value")
+        field = value
+    }
