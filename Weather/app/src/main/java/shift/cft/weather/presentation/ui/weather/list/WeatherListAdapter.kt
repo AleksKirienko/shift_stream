@@ -1,16 +1,17 @@
-package shift.cft.weather
+package shift.cft.weather.presentation.ui.weather.list
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import shift.cft.weather.R
+import shift.cft.weather.model.entity.Info
 import java.util.*
 
-class WeatherListAdapter : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>() {
+class WeatherListAdapter(private val clickListener:(Info) -> Unit) : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>() {
 
     private val weatherList: MutableList<Info> = LinkedList()
-    private var weatherListener: WeatherListener? = null
 
     fun setWeatherList(newWeather: List<Info>) {
         weatherList.clear()
@@ -19,13 +20,12 @@ class WeatherListAdapter : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>()
         notifyDataSetChanged()
     }
 
-    fun setListener(listener: WeatherListener) {
-        weatherListener = listener
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
-        return ViewHolder(view, weatherListener)
+        return ViewHolder(
+            view,
+            clickListener
+        )
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +36,7 @@ class WeatherListAdapter : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>()
         holder.bind(model = weatherList[position])
     }
 
-    class ViewHolder(itemView: View, private val weatherListener: WeatherListener?) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, private val weatherListener: (Info) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
         private val title: TextView = itemView.findViewById(R.id.itemTitle)
 
@@ -44,12 +44,8 @@ class WeatherListAdapter : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>()
             title.text = model.title
             itemView.setOnClickListener {
 
-                weatherListener?.onClickNote(model)
+                weatherListener(model)
             }
         }
-    }
-
-    interface WeatherListener {
-        fun onClickNote(model: Info)
     }
 }

@@ -1,10 +1,13 @@
-package shift.cft.weather
+package shift.cft.weather.presentation.ui.weather.list
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_weather.*
+import shift.cft.weather.R
+import shift.cft.weather.model.entity.Info
+import shift.cft.weather.presentation.ui.weather.CityDetailActivity
 
 class WeatherActivity : AppCompatActivity() {
 
@@ -26,11 +29,16 @@ class WeatherActivity : AppCompatActivity() {
         Info("Челябинск", "Облачно +25°C")
     )
 
+    val adapter = WeatherListAdapter { model ->
+        val intent = Intent(this@WeatherActivity, CityDetailActivity::class.java)
+        intent.putExtra("City", model)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
 
-        val adapter = WeatherListAdapter()
         val layoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
@@ -38,15 +46,5 @@ class WeatherActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
 
         adapter.setWeatherList(citiesList)
-
-        adapter.setListener(object : WeatherListAdapter.WeatherListener {
-            override fun onClickNote(model: Info) {
-                val intent = Intent(this@WeatherActivity, CityDetailActivity::class.java)
-                intent.putStringArrayListExtra("City", arrayListOf(model.title, model.description))
-                startActivity(intent)
-            }
-        })
-
     }
-
 }
