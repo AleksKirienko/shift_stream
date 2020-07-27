@@ -3,9 +3,10 @@ package shift.cft.weather.presentation.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import shift.cft.weather.R
-import shift.cft.weather.presentation.ui.weather.list.WeatherActivity
+import shift.cft.weather.presentation.ui.weather.list.CitiesActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button1.setOnClickListener {
-            startActivity(Intent(this, WeatherActivity::class.java))
+            startActivity(Intent(this, CitiesActivity::class.java))
+        }
+
+        button2.setOnClickListener {
+            Toast.makeText(this, "Тут пока ничего нет, но скоро будет!", Toast.LENGTH_SHORT).show()
         }
     }
 }

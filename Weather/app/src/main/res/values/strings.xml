@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="company">© AlexGervas</string>
+    <string name="menu">Menu</string>
 </resources>

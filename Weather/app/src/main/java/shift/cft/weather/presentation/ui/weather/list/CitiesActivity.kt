@@ -12,7 +12,7 @@ import shift.cft.weather.model.entity.Info
 import shift.cft.weather.presentation.ui.weather.CityDetailActivity
 import shift.cft.weather.presentation.viewmodel.weather.list.WeatherListViewModel
 
-class WeatherActivity : AppCompatActivity() {
+class CitiesActivity : AppCompatActivity() {
 
     private val viewModel: WeatherListViewModel by viewModels()
     private val adapter = WeatherListAdapter { model ->
@@ -44,7 +44,7 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun showWeatherDetails(model: Info) {
-        val intent = Intent(this@WeatherActivity, CityDetailActivity::class.java)
+        val intent = Intent(this@CitiesActivity, CityDetailActivity::class.java)
         intent.putExtra("City", model)
         startActivity(intent)
     }
