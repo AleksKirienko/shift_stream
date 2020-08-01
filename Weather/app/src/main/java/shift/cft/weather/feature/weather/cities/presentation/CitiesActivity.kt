@@ -8,12 +8,15 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_weather.*
 import shift.cft.weather.R
+import shift.cft.weather.feature.weather.cities.di.CityViewModelFactory
 import shift.cft.weather.feature.weather.domain.entity.Info
 import shift.cft.weather.feature.weather.details.presentation.CityDetailActivity
 
 class CitiesActivity : AppCompatActivity() {
 
-    private val viewModel: WeatherListViewModel by viewModels()
+    private val viewModel: WeatherListViewModel by viewModels {
+        CityViewModelFactory()
+    }
     private val adapter =
         WeatherListAdapter { model ->
             viewModel.citiesClicked(model)
