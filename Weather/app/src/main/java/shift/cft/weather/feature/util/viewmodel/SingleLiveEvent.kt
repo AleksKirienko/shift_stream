@@ -1,4 +1,4 @@
-package shift.cft.weather.presentation.viewmodel
+package shift.cft.weather.feature.util.viewmodel
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

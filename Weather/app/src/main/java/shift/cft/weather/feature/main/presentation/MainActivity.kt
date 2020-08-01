@@ -1,4 +1,4 @@
-package shift.cft.weather.presentation.ui
+package shift.cft.weather.feature.main.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import shift.cft.weather.R
-import shift.cft.weather.presentation.ui.weather.list.CitiesActivity
+import shift.cft.weather.feature.weather.cities.presentation.CitiesActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

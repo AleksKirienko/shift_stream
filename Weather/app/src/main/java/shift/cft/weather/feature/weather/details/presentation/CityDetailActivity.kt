@@ -1,11 +1,10 @@
-package shift.cft.weather.presentation.ui.weather
+package shift.cft.weather.feature.weather.details.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_city_detail.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import shift.cft.weather.R
-import shift.cft.weather.model.entity.Info
+import shift.cft.weather.feature.weather.domain.entity.Info
 
 @Suppress("DEPRECATION")
 class CityDetailActivity : AppCompatActivity() {

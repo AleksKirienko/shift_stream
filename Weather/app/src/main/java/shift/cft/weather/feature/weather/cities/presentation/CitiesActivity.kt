@@ -1,4 +1,4 @@
-package shift.cft.weather.presentation.ui.weather.list
+package shift.cft.weather.feature.weather.cities.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +8,16 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_weather.*
 import shift.cft.weather.R
-import shift.cft.weather.model.entity.Info
-import shift.cft.weather.presentation.ui.weather.CityDetailActivity
-import shift.cft.weather.presentation.viewmodel.weather.list.WeatherListViewModel
+import shift.cft.weather.feature.weather.domain.entity.Info
+import shift.cft.weather.feature.weather.details.presentation.CityDetailActivity
 
 class CitiesActivity : AppCompatActivity() {
 
     private val viewModel: WeatherListViewModel by viewModels()
-    private val adapter = WeatherListAdapter { model ->
-        viewModel.citiesClicked(model)
-    }
+    private val adapter =
+        WeatherListAdapter { model ->
+            viewModel.citiesClicked(model)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

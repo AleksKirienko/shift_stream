@@ -1,4 +1,4 @@
-package shift.cft.weather.model.entity
+package shift.cft.weather.feature.weather.domain.entity
 
 import java.io.Serializable
 
