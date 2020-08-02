@@ -1,79 +1,13 @@
 package shift.cft.server.repository
 
-import shift.cft.common.Info
+import org.jetbrains.exposed.sql.selectAll
+import shift.cft.server.db.dbQuery
+import shift.cft.server.db.table.Cities
+import shift.cft.server.db.table.toInfo
 
 class WeatherRepository {
-    fun getAll() = listOf(
-
-        Info(
-            "Барнаул",
-            "Переменная облачность",
-            "+26°C"
-        ),
-        Info(
-            "Бердск",
-            "Переменная облачность",
-            "+22°C"
-        ),
-        Info(
-            "Воронеж",
-            "Малооблачно",
-            "+23°C"
-        ),
-        Info(
-            "Екатеринбург",
-            "Пасмурно",
-            "+22°C"
-        ),
-        Info(
-            "Казань",
-            "Малооблачно",
-            "+22°C"
-        ),
-        Info(
-            "Москва",
-            "Местами грозы",
-            "+17°C"
-        ),
-        Info(
-            "Новосибирск",
-            "Солнечно",
-            "+23°C"
-        ),
-        Info(
-            "Омск",
-            "Малооблачно",
-            "+22°C"
-        ),
-        Info(
-            "Самара",
-            "Облачно",
-            "+22°C"
-        ),
-        Info(
-            "Санкт-Петербург",
-            "Облачно",
-            "+18°C"
-        ),
-        Info(
-            "Тольятти",
-            "Малооблачно",
-            "+25°C"
-        ),
-        Info(
-            "Тюмень",
-            "Облачно",
-            "+23°C"
-        ),
-        Info(
-            "Уфа",
-            "Пасмурно",
-            "+23°C"
-        ),
-        Info(
-            "Челябинск",
-            "Облачно",
-            "+25°C"
-        )
-    )
+    suspend fun getAll() =
+        dbQuery {
+            Cities.selectAll().map { it.toInfo() }
+        }
 }

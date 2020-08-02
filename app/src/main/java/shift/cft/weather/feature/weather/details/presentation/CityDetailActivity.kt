@@ -3,8 +3,8 @@ package shift.cft.weather.feature.weather.details.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_city_detail.*
+import shift.cft.common.Info
 import shift.cft.weather.R
-import shift.cft.weather.feature.weather.domain.entity.Info
 
 @Suppress("DEPRECATION")
 class CityDetailActivity : AppCompatActivity() {

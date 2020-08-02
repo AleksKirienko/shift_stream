@@ -1,6 +1,6 @@
 package shift.cft.weather.feature.weather.cities.domain
 
-import shift.cft.weather.feature.weather.domain.entity.Info
+import shift.cft.common.Info
 
 class GetCitiesUseCase(private val citiesRepositoiry: CitiesRepositoiry) {
 
