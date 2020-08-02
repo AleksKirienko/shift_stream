@@ -1,4 +1,0 @@
-include ':app'
-include ':server'
-include ':common'
-rootProject.name = "Weather"
