@@ -4,5 +4,5 @@ import shift.cft.common.Info
 
 interface CitiesRepositoiry {
 
-    fun getCity(): List<Info>
+    suspend fun getCity(): List<Info>
 }
