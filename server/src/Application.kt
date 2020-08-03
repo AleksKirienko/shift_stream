@@ -10,6 +10,7 @@ import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.*
 import shift.cft.common.CreateCityDto
+import shift.cft.common.UpdateCityDto
 import shift.cft.server.db.DataBaseFactory
 import shift.cft.server.repository.WeatherRepository
 import java.net.URI
@@ -62,6 +63,12 @@ fun Application.module(testing: Boolean = false) {
                     repository.delete(id)
                     call.respond(HttpStatusCode.OK)
                 }
+            }
+
+            put {
+                val weather = call.receive<UpdateCityDto>()
+                repository.update(weather)
+                call.respond(HttpStatusCode.OK)
             }
         }
     }
