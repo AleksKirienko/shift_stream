@@ -5,9 +5,11 @@ import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.gson.gson
+import io.ktor.http.HttpStatusCode
+import io.ktor.request.receive
 import io.ktor.response.respond
-import io.ktor.routing.get
-import io.ktor.routing.routing
+import io.ktor.routing.*
+import shift.cft.common.CreateCityDto
 import shift.cft.server.db.DataBaseFactory
 import shift.cft.server.repository.WeatherRepository
 import java.net.URI
@@ -35,11 +37,30 @@ fun Application.module(testing: Boolean = false) {
         init()
     }
 
+    val repository = WeatherRepository()
+
     routing {
-        get("/cities") {
-            val repository = WeatherRepository()
-            val cities = repository.getAll()
-            call.respond(cities)
+        route("/cities") {
+            get {
+                val cities = repository.getAll()
+                call.respond(cities)
+            }
+
+            post {
+                val city = call.receive<CreateCityDto>()
+                repository.add(city)
+                call.respond(HttpStatusCode.OK)
+            }
+
+            delete {
+                val id = call.request.queryParameters["id"]?.toLong()
+                if (id == null) {
+                    call.respond(HttpStatusCode.NotFound)
+                } else {
+                    repository.delete(id)
+                    call.respond(HttpStatusCode.OK)
+                }
+            }
         }
     }
 }
