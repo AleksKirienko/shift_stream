@@ -1,9 +1,6 @@
 package shift.cft.server.repository
 
-import org.jetbrains.exposed.sql.deleteWhere
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.update
+import org.jetbrains.exposed.sql.*
 import shift.cft.common.CreateCityDto
 import shift.cft.common.UpdateCityDto
 import shift.cft.server.db.dbQuery
@@ -34,12 +31,11 @@ class WeatherRepository {
         }
     }
 
-    suspend fun update(updateCityDto: UpdateCityDto) {
+    suspend fun update(id: Long, updateCityDto: UpdateCityDto) {
         dbQuery {
-            Cities.update { updateStatement ->
-                updateStatement[title] = updateCityDto.title
-                updateStatement[description] = updateCityDto.description
-                updateStatement[temperature] = updateCityDto.temperature
+            Cities.update({ Cities.id eq id }) {
+                it[title] = updateCityDto.title
+                it[temperature] = updateCityDto.temperature
             }
         }
     }

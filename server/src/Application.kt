@@ -66,9 +66,14 @@ fun Application.module(testing: Boolean = false) {
             }
 
             put {
+                val id = call.request.queryParameters["id"]?.toLong()
                 val weather = call.receive<UpdateCityDto>()
-                repository.update(weather)
-                call.respond(HttpStatusCode.OK)
+                if (id == null) {
+                    call.respond(HttpStatusCode.NotFound)
+                } else {
+                    repository.update(id, weather)
+                    call.respond(HttpStatusCode.OK)
+                }
             }
         }
     }
