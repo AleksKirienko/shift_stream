@@ -2,6 +2,7 @@ package shift.cft.weather.feature.weather.cities.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -40,7 +41,9 @@ class CitiesActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = layoutManager
 
-
+        addButton.setOnClickListener() {
+            startActivity(Intent(this, AddCityActivity::class.java))
+        }
     }
 
     private fun setCitiesList(citiesList: List<Info>) {
