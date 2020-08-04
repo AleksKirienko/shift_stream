@@ -14,6 +14,11 @@ class AddCityActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_city)
 
         saveButton.setOnClickListener() {
+
+            val createTitle = addTitle.toString()
+            val createDescription = addDescription.toString()
+            val createTemperature = addTemperature.toString()
+
             Toast.makeText(this, "Город добавлен!", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, CitiesActivity::class.java))
         }

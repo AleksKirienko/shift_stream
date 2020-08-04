@@ -10,4 +10,8 @@ interface NetworkWeatherDataSource {
 class NetworkWeatherDataSourceImpl(private val api: CitiesApi) : NetworkWeatherDataSource {
     override suspend fun getCity(): List<Info> =
         api.getAll()
+
+//    suspend fun delCity(id: Long) {
+//        api.deleteCity(id)
+//    }
 }
