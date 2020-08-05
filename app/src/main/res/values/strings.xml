@@ -2,4 +2,6 @@
     <string name="app_name">Weather</string>
     <string name="company">© AlexGervas</string>
     <string name="menu">Menu</string>
+    <string name="action_home">Home</string>
+    <string name="action_cities">Cities</string>
 </resources>
