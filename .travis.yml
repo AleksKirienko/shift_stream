@@ -35,17 +35,18 @@ android:
     - android-sdk-license-.+
     - google-gdk-license-.+
 before_install:
+  - openssl aes-256-cbc -K $encrypted_bf364cab31c0_key -iv $encrypted_bf364cab31c0_iv
+  -in test.jks.enc -out test.jks -d
   - mkdir "$ANDROID_HOME/licenses" || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
   - chmod +x gradlew
   - "./gradlew dependencies || true"
 before_script:
-  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a -c
-    32M
+  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a -c 32M
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
-  - sleep 60
+  - sleep 180
   - adb devices
   - adb shell input keyevent 82 &
 script:
@@ -54,15 +55,14 @@ before_deploy:
   - cp $TRAVIS_BUILD_DIR/.my_key_store $HOME
   - cd app/build/outputs/apk/
   - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/my_key_store.jks
-  - storepass $storepass -keypass $keypass app-release-unsigned.apk
-  alias
+  -storepass $storepass -keypass $keypass app-release-unsigned.apk romakononovich
   - jarsigner -verify app-release-unsigned.apk
-  - "${ANDROID_HOME}/build-tools/27.0.3/zipalign -v 4 app-release-unsigned.apk AppWeather.apk"
+  - "${ANDROID_HOME}/build-tools/29.0.3/zipalign -v 4 app-release-unsigned.apk AppWeather.apk"
 deploy:
   provider: releases
   file: AppWeather.apk
   skip_cleanup: true
   on:
-    repo: romakononovich/AppWeather
+    repo: AleksKirienko/shift_stream
     tags: true
     jdk: oraclejdk8
