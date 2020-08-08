@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_weather.*
 import shift.cft.common.Info
 import shift.cft.weather.R
 import shift.cft.weather.feature.main.presentation.MainActivity
+import shift.cft.weather.feature.weather.add.presentation.AddCityActivity
 import shift.cft.weather.feature.weather.cities.di.CityViewModelFactory
 import shift.cft.weather.feature.weather.details.presentation.CityDetailActivity
 

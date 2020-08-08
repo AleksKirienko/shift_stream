@@ -1,4 +1,4 @@
-package shift.cft.weather.feature.weather.details.presentation
+package shift.cft.weather.feature.weather.update
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.weather.details.presentation.UpdateCityActivity">
+    tools:context=".feature.weather.update.UpdateCityActivity">
 
     <EditText
         android:id="@+id/updateTemperature"

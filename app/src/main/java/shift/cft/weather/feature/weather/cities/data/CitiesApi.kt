@@ -12,8 +12,8 @@ interface CitiesApi {
     @GET("/cities")
     suspend fun getAll(): List<Info>
 
-    @POST("/cities")
-    suspend fun addCity(createCityDto: CreateCityDto)
+//    @POST("/cities")
+//    suspend fun addCity(createCityDto: CreateCityDto)
 
     @DELETE("/cities")
     suspend fun deleteCity(id: Long)

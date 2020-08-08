@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.weather.details.presentation.UpdateCityActivity"></activity>
-        <activity android:name=".feature.weather.cities.presentation.AddCityActivity"></activity>
+        <activity android:name=".feature.weather.update.UpdateCityActivity"></activity>
+        <activity android:name=".feature.weather.add.presentation.AddCityActivity"></activity>
         <activity android:name=".feature.weather.details.presentation.CityDetailActivity" />
         <activity android:name=".feature.weather.cities.presentation.CitiesActivity" />
         <activity android:name=".feature.main.presentation.MainActivity">

@@ -11,6 +11,7 @@ import shift.cft.common.Info
 import shift.cft.weather.R
 import shift.cft.weather.feature.main.presentation.MainActivity
 import shift.cft.weather.feature.weather.cities.presentation.CitiesActivity
+import shift.cft.weather.feature.weather.update.UpdateCityActivity
 
 @Suppress("DEPRECATION")
 class CityDetailActivity : AppCompatActivity() {
